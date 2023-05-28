@@ -25,14 +25,11 @@ public class XmlParserService {
     int readerEvent;
     while((readerEvent = reader.next()) != XMLStreamConstants.END_DOCUMENT) {
       while(readerEvent == XMLStreamReader.START_ELEMENT && "product".equals(reader.getLocalName())) {
-//        JAXBContext jaxb = JAXBContext.newInstance(Product.class);
-//        Unmarshaller unmarshaller = jaxb.createUnmarshaller();
         Product product = unmarshaller.unmarshal(reader, Product.class).getValue();
         logger.info("Extracted Product:" + product);
         readerEvent = reader.getEventType();
       }
     }
-
     reader.close();
   }
 

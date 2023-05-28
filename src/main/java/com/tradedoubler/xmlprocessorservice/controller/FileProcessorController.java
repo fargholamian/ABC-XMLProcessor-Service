@@ -1,7 +1,7 @@
 package com.tradedoubler.xmlprocessorservice.controller;
 
-import com.tradedoubler.xmlprocessorservice.model.File;
-import com.tradedoubler.xmlprocessorservice.repo.FileRepository;
+import com.tradedoubler.xmlprocessorservice.model.Event;
+import com.tradedoubler.xmlprocessorservice.repo.EventRepository;
 import com.tradedoubler.xmlprocessorservice.service.XmlParserService;
 import jakarta.xml.bind.JAXBException;
 import java.nio.file.Files;
@@ -28,21 +28,21 @@ public class FileProcessorController {
   @Value("${application.directories.uploaded}")
   private String uploadedFileDirectory;
 
-  private final FileRepository fileRepository;
+  private final EventRepository eventRepository;
 
   private final XmlParserService xmlParserService;
 
   @PostMapping("/received")
-  public ResponseEntity<String> uploadFile(@RequestBody File file) throws XMLStreamException, JAXBException {
+  public ResponseEntity<String> uploadFile(@RequestBody Event event) throws XMLStreamException, JAXBException {
 
-    logger.info("User id:" + file.getUserId());
-    Path path = Paths.get(uploadedFileDirectory + "/" + file.getName());
+    logger.info("User id:" + event.getUserId());
+    Path path = Paths.get(uploadedFileDirectory + "/" + event.getFilename());
     if (Files.notExists(path)) {
       return ResponseEntity.badRequest().body("Can't find the uploaded file");
     }
 
-    fileRepository.save(file);
     xmlParserService.parseAndStore(path.toString());
+    eventRepository.save(event);
 
     String result = "Uploaded file registered successfully!";
     return ResponseEntity.ok(result);
