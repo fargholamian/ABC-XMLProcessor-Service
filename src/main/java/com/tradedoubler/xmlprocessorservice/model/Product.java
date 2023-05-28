@@ -1,18 +1,37 @@
 package com.tradedoubler.xmlprocessorservice.model;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementWrapper;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlTransient;
 import java.util.List;
 import jakarta.xml.bind.annotation.XmlAttribute;
+import java.util.UUID;
 import lombok.Data;
 
 @Data
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+@Entity
+@Table(name = "products")
 public class Product {
+  @Id
+  @XmlTransient
+  private UUID id = UUID.randomUUID();
+
+  @XmlTransient
+  @ManyToOne
+  private Event event;
+
   @XmlAttribute
   private String groupingId;
 
@@ -26,14 +45,17 @@ public class Product {
   private String description;
 
   @XmlElement(namespace = "urn:com:tradedoubler:pf:model:xml:common")
+  @OneToOne(cascade = CascadeType.ALL)
   private Image productImage;
 
   @XmlElementWrapper(name = "categories", namespace = "urn:com:tradedoubler:pf:model:xml:common")
   @XmlElement(name = "category", namespace = "urn:com:tradedoubler:pf:model:xml:common")
+  @OneToMany(cascade = CascadeType.ALL)
   private List<Category> categories;
 
   @XmlElementWrapper(name = "fields", namespace = "urn:com:tradedoubler:pf:model:xml:common")
   @XmlElement(name = "field", namespace = "urn:com:tradedoubler:pf:model:xml:common")
+  @OneToMany(cascade = CascadeType.ALL)
   private List<Field> fields;
 
   @XmlElement(namespace = "urn:com:tradedoubler:pf:model:xml:common")
@@ -77,5 +99,6 @@ public class Product {
 
   @XmlElementWrapper(name = "offers", namespace = "urn:com:tradedoubler:pf:model:xml:output")
   @XmlElement(name = "offer", namespace = "urn:com:tradedoubler:pf:model:xml:output")
+  @OneToMany(cascade = CascadeType.ALL)
   private List<Offer> offers;
 }
