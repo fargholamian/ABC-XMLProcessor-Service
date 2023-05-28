@@ -1,0 +1,27 @@
+server:
+  port: 9001
+  ssl:
+    enabled: false
+
+application:
+  authentication:
+    uri: http://127.0.0.1:9000/api/user/
+  directories:
+    uploaded: /Users/farzad/Documents/MyProjects/upload-files
+
+spring:
+  application:
+    name: 'xmlprocessor-service'
+  datasource:
+    url: 'jdbc:mysql://127.0.0.1:3306/product'
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+logging:
+  level:
+    root: info
