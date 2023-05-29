@@ -1,11 +1,11 @@
 server:
-  port: 9001
+  port: 8083
   ssl:
     enabled: false
 
 application:
   authentication:
-    uri: http://127.0.0.1:9000/api/user/
+    uri: http://127.0.0.1:8081/api/user/
   directories:
     uploaded: /Users/farzad/Documents/MyProjects/upload-files
 
@@ -13,7 +13,7 @@ spring:
   application:
     name: 'xmlprocessor-service'
   datasource:
-    url: 'jdbc:mysql://127.0.0.1:3306/product'
+    url: 'jdbc:mysql://127.0.0.1:3306/product?createDatabaseIfNotExist=true'
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -24,7 +24,7 @@ spring:
 
   kafka:
     consumer:
-      bootstrap-servers: localhost:9092
+      bootstrap-servers: localhost:29092
       group-id: xml_processor_group
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
@@ -33,3 +33,31 @@ spring:
 logging:
   level:
     root: info
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: 'jdbc:mysql://abc-mysql:3306/product?createDatabaseIfNotExist=true'
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  kafka:
+    consumer:
+      bootstrap-servers: kafka:9092
+      group-id: xml_processor_group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+server:
+  port: 8080
+application:
+  authentication:
+    uri: http://authentication-service:8080/api/user/
+  directories:
+    uploaded: /var/upload
+logging:
+  level:
+    root: error
