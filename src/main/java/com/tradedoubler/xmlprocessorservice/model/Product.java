@@ -1,5 +1,7 @@
 package com.tradedoubler.xmlprocessorservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -26,10 +28,12 @@ import lombok.Data;
 public class Product {
   @Id
   @XmlTransient
+  @JsonIgnore
   private UUID id = UUID.randomUUID();
 
-  @XmlTransient
   @ManyToOne
+  @XmlElement(name = "owner")
+  @JsonProperty("owner")
   private Event event;
 
   @XmlAttribute

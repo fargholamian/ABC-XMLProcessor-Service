@@ -10,6 +10,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementWrapper;
+import jakarta.xml.bind.annotation.XmlTransient;
 import java.util.List;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import java.util.UUID;
@@ -21,6 +22,7 @@ import lombok.Data;
 @Table(name = "offers")
 public class Offer {
   @Id
+  @XmlTransient
   private UUID id = UUID.randomUUID();
   @XmlAttribute(name = "id")
   private String offerId;
