@@ -18,9 +18,9 @@ import jakarta.xml.bind.annotation.XmlTransient;
 import java.util.List;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import java.util.UUID;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
@@ -105,4 +105,8 @@ public class Product {
   @XmlElement(name = "offer", namespace = "urn:com:tradedoubler:pf:model:xml:output")
   @OneToMany(cascade = CascadeType.ALL)
   private List<Offer> offers;
+
+  public void setEvent(Event event) {
+    this.event = event;
+  }
 }

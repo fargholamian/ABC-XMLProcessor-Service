@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import java.util.UUID;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Table(name = "Categories")

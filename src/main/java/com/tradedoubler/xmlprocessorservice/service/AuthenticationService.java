@@ -1,11 +1,11 @@
 package com.tradedoubler.xmlprocessorservice.service;
 
+import com.tradedoubler.xmlprocessorservice.configuration.AppConfig;
 import com.tradedoubler.xmlprocessorservice.model.User;
-import com.tradedoubler.xmlprocessorservice.service.resp.GetUserResponse;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -20,10 +20,11 @@ public class AuthenticationService {
 
   Logger logger = LoggerFactory.getLogger(AuthenticationService.class);
 
-  @Value("${application.authentication.uri}")
-  private String getUserUri;
+  @Autowired
+  private RestTemplate restTemplate;
 
-  private final RestTemplate restTemplate = new RestTemplate();
+  @Autowired
+  private AppConfig appConfig;
 
   public Optional<User> getUser(String token) {
     HttpHeaders headers = new HttpHeaders();
@@ -32,20 +33,16 @@ public class AuthenticationService {
     HttpEntity<?> entity = new HttpEntity<HttpHeaders>(null, headers);
 
     try {
-      logger.info("Auth Server URI: " + getUserUri);
-      ResponseEntity<GetUserResponse> response =
-          restTemplate.exchange(getUserUri, HttpMethod.GET, entity, GetUserResponse.class);
+      logger.info("Auth Server URI: " + appConfig.getGetUserUri());
+      ResponseEntity<User> response =
+          restTemplate.exchange(appConfig.getGetUserUri(), HttpMethod.GET, entity, User.class);
       if (response.getStatusCode() == HttpStatus.OK
-          && response.getBody() != null
-          && Boolean.TRUE.equals(response.getBody().getStatus())
-          && response.getBody().getUser() != null) {
-        return Optional.of(response.getBody().getUser());
+          && response.getBody() != null) {
+        return Optional.of(response.getBody());
       }
     }  catch (HttpStatusCodeException exception) {
       return Optional.empty();
     }
-
     return Optional.empty();
   }
-
 }

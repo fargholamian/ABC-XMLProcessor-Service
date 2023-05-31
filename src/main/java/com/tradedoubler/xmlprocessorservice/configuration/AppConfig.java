@@ -1,25 +1,16 @@
 package com.tradedoubler.xmlprocessorservice.configuration;
 
-import lombok.AllArgsConstructor;
-import org.springframework.boot.convert.ApplicationConversionService;
+import lombok.Getter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.format.FormatterRegistry;
-import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-@AllArgsConstructor
-public class AppConfig implements WebMvcConfigurer {
+@Getter
+public class AppConfig {
 
-  private HandlerInterceptor authenticationService;
-  @Override
-  public void addInterceptors(InterceptorRegistry registry) {
-    registry.addInterceptor(authenticationService);
-  }
+  @Value("${application.directories.uploaded}")
+  private String uploadedFileDirectory;
 
-  @Override
-  public void addFormatters(FormatterRegistry registry) {
-    ApplicationConversionService.configure(registry);
-  }
+  @Value("${application.authentication.uri}")
+  private String getUserUri;
 }

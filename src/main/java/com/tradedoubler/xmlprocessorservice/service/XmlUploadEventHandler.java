@@ -1,5 +1,6 @@
 package com.tradedoubler.xmlprocessorservice.service;
 
+import com.tradedoubler.xmlprocessorservice.configuration.AppConfig;
 import com.tradedoubler.xmlprocessorservice.model.Event;
 import com.tradedoubler.xmlprocessorservice.model.Product;
 import com.tradedoubler.xmlprocessorservice.repo.ProductRepository;
@@ -18,7 +19,6 @@ import javax.xml.transform.stream.StreamSource;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,18 +28,17 @@ public class XmlUploadEventHandler implements EventHandler {
 
   private final ProductRepository productRepository;
 
-  @Value("${application.directories.uploaded}")
-  private String uploadedFileDirectory;
+  private final AppConfig appConfig;
 
   @Override
   public void handle(Event event) {
-
     parseAndStore(event);
   }
 
   private void parseAndStore(Event event) {
     try {
-      Path path = Paths.get(uploadedFileDirectory + File.separator + event.getFilename());
+      Path path = Paths.get(appConfig.getUploadedFileDirectory() + File.separator + event.getFilename());
+      logger.info("File path: " + path);
       if (Files.notExists(path)) {
         throw new RuntimeException("Can't find the uploaded file: " + event.getFilename() + " for eventId: " + event.getId());
       }
@@ -54,8 +53,6 @@ public class XmlUploadEventHandler implements EventHandler {
         while (readerEvent == XMLStreamReader.START_ELEMENT && "product".equals(reader.getLocalName())) {
           Product product = unmarshaller.unmarshal(reader, Product.class).getValue();
           product.setEvent(event);
-          logger.info("Extracted Product:" + product);
-          logger.info("Extracted Event:" + product.getEvent());
           productRepository.save(product);
           readerEvent = reader.getEventType();
         }

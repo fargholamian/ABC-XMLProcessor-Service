@@ -15,9 +15,9 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 import java.util.UUID;
-import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -28,19 +28,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping(value = "/api/product")
 @Validated
-public class CVSQueryController {
-  private final static Logger logger = LoggerFactory.getLogger(CVSQueryController.class);
+public class ProductController {
+  private final static Logger logger = LoggerFactory.getLogger(ProductController.class);
 
-  private final ProductRepository productRepository;
+  @Autowired
+  private ProductRepository productRepository;
 
   @GetMapping
   public void getProductByUserId(@RequestParam UUID userId,
                                  @RequestParam(required = false) OutputFormats format,
                                  @RequestParam(defaultValue = "0", required = false) Integer offset,
-                                 @RequestParam(defaultValue = "10", required = false) @Max(value = 10, message = "Size should be less than 10") Integer size,
+                                 @RequestParam(defaultValue = "100", required = false) @Max(value = 1000, message = "Size should be less than 1000") Integer size,
                                  HttpServletResponse response) throws IOException, JAXBException {
 
     Pageable paging = PageRequest.of(offset, size, Sort.by("id"));
@@ -69,13 +69,7 @@ public class CVSQueryController {
   public void sendResultInJsonFormat(List<Product> productList, HttpServletResponse response) throws IOException {
     response.setContentType("application/json");
     Writer write = response.getWriter();
-    productList.forEach(product -> {
-      try {
-        write.write(new ObjectMapper().writeValueAsString(product));
-      } catch (IOException e) {
-        throw new RuntimeException(e);
-      }
-    });
+    write.write(new ObjectMapper().writeValueAsString(productList));
     response.setStatus(HttpServletResponse.SC_OK);
   }
 

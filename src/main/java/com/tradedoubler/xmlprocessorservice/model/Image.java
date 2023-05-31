@@ -9,9 +9,9 @@ import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlValue;
 import java.util.UUID;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Table(name = "images")

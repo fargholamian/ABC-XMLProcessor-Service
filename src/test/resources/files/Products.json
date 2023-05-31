@@ -1,0 +1,257 @@
+[
+  {
+    "groupingId": "skuSKU1-TV0000011",
+    "language": "sv",
+    "name": "Second Test product name",
+    "description": "Second description",
+    "productImage": {
+      "id": "244a0e76-bb3a-4ad4-9e21-6dd684a549cc",
+      "height": 70,
+      "width": 140,
+      "url": "https://picsum.photos/id/1/200/300"
+    },
+    "categories": [
+      {
+        "id": "892edc2a-ff17-4a8e-8516-244a828b6431",
+        "categoryId": 708,
+        "name": "Skates",
+        "tdCategoryName": "Skates"
+      }
+    ],
+    "fields": [
+      {
+        "id": "23ecc088-a36c-49b2-a71f-48b6e1aa427a",
+        "name": "ProductType",
+        "value": "Mobile"
+      },
+      {
+        "id": "5f40583d-9222-4fef-bc14-57b60b6d7db0",
+        "name": "HomeDelivery",
+        "value": "Yes"
+      },
+      {
+        "id": "61794884-4ac6-4297-bd75-2f00d6438a89",
+        "name": "Company",
+        "value": "Samsung"
+      }
+    ],
+    "weight": "500 g",
+    "size": "120x70x70 cm",
+    "model": "SamsungMobile000001",
+    "brand": "Samsung",
+    "manufacturer": "Samsung",
+    "techSpecs": "SMART Mobile",
+    "shortDescription": "Mobile from Samsung",
+    "promoText": "Reduced price!!",
+    "ean": "ean101000000000000011",
+    "upc": "upc101000000000000011",
+    "isbn": "isn101000000000000011",
+    "mpn": "mpn101000000000000011",
+    "sku": "SKU1-TV0000011",
+    "offers": [
+      {
+        "id": "63e83e02-9738-4265-a71b-00e45fcfa248",
+        "offerId": "e8d137ad-9bfe-47f6-9b72-58545fb2a70b",
+        "sourceProductId": "Second sourceProductId wnHobsXREr XuYGCrLEaA",
+        "modifiedDate": "1677520388461",
+        "dateFormat": "epoch",
+        "feedId": 99999999,
+        "productUrl": "hhttps://www.test.com?prod=2",
+        "programName": "Program302870",
+        "programLogo": "http://logo.gif",
+        "priceHistory": [
+          {
+            "id": "65cbb04b-ed24-470e-a504-7105a44aa739",
+            "currency": "SEK",
+            "date": 1677520388461,
+            "dateFormat": "epoch",
+            "value": 224.55
+          }
+        ],
+        "warranty": "5 years warranty",
+        "inStock": 150,
+        "availability": "In stock at store",
+        "deliveryTime": "8-21 days",
+        "condition": "New",
+        "shippingCost": "The shipping cost is 40."
+      }
+    ],
+    "owner": {
+      "id": "6ad7c69e-e763-4f1a-9e37-950521f8483e",
+      "userId": "4d91539b-2329-400b-bad2-ca5165d8c884",
+      "filename": "582fc8f0-fbf2-47fa-a4ca-1c51d6f55a77.xml"
+    }
+  },
+  {
+    "groupingId": "skuSKU1-TV0000012",
+    "language": "sv",
+    "name": "Third Test product name",
+    "description": "Third description",
+    "productImage": {
+      "id": "b9526bd7-aef1-4dc4-9d55-913103081488",
+      "height": 50,
+      "width": 150,
+      "url": "https://picsum.photos/id/1/200/300"
+    },
+    "categories": [
+      {
+        "id": "4b0a3028-e231-4b27-abee-20297bf696ea",
+        "categoryId": 68,
+        "name": "Fashion",
+        "tdCategoryName": "Fashion"
+      }
+    ],
+    "fields": [
+      {
+        "id": "278ed141-9cfc-48cf-9f01-58bba13de3af",
+        "name": "ProductType",
+        "value": "TV"
+      },
+      {
+        "id": "920553d0-83b0-4eff-a7e1-a4c039ab9d6f",
+        "name": "HomeDelivery",
+        "value": "No"
+      },
+      {
+        "id": "cd31e550-a749-49e7-a5b3-4feef7c23f9c",
+        "name": "Company",
+        "value": "Sony"
+      }
+    ],
+    "weight": "1500 g",
+    "size": "130x80x80 cm",
+    "model": "SonyTV000001",
+    "brand": "Sony",
+    "manufacturer": "Sony",
+    "techSpecs": "SMART TV",
+    "shortDescription": "Televisions from Sony",
+    "promoText": "Reduced price!!",
+    "ean": "ean101000000000000012",
+    "upc": "upc101000000000000012",
+    "isbn": "isn101000000000000012",
+    "mpn": "mpn101000000000000012",
+    "sku": "SKU1-TV0000012",
+    "offers": [
+      {
+        "id": "54e2635c-5ccd-4ecf-9732-076e7a3f992b",
+        "offerId": "260d24e5-c0ac-49fb-9a0f-62789aa6524c",
+        "sourceProductId": "Third sourceProductId ifKDFarCIp yJcRgBdWAr",
+        "modifiedDate": "1677520388461",
+        "dateFormat": "epoch",
+        "feedId": 99999999,
+        "productUrl": "https://www.test.com?prod=3",
+        "programName": "Program302870",
+        "programLogo": "http://logo.gif",
+        "priceHistory": [
+          {
+            "id": "c1eec2d2-1f87-49d2-8605-0df603334742",
+            "currency": "SEK",
+            "date": 1677520388461,
+            "dateFormat": "epoch",
+            "value": 3003.5
+          }
+        ],
+        "warranty": "8 years warranty",
+        "inStock": 501,
+        "availability": "In stock at online",
+        "deliveryTime": "9-22 days",
+        "condition": "Refurbished",
+        "shippingCost": "The shipping cost is 30."
+      }
+    ],
+    "owner": {
+      "id": "84f78d87-7335-47a7-883f-ce84caa79a3c",
+      "userId": "4d91539b-2329-400b-bad2-ca5165d8c884",
+      "filename": "2eea9b9f-6273-434d-83e3-05b20328910c.xml"
+    }
+  },
+  {
+    "groupingId": "skuSKU1-TV000001",
+    "language": "sv",
+    "name": "First Test product name",
+    "description": "First description",
+    "productImage": {
+      "id": "3b228822-ea8d-447c-944c-990206a6dc4b",
+      "height": 60,
+      "width": 120,
+      "url": "https://picsum.photos/id/1/200/300"
+    },
+    "categories": [
+      {
+        "id": "3fcf9656-d14f-48e6-96ae-53fbcaa75fe7",
+        "categoryId": 65,
+        "name": "Television",
+        "tdCategoryName": "Televisions"
+      },
+      {
+        "id": "7508a962-9b69-49a8-a8b3-0dfd0038584f",
+        "categoryId": 40,
+        "name": "Electronic",
+        "tdCategoryName": "Electronics"
+      }
+    ],
+    "fields": [
+      {
+        "id": "5f42de58-87c7-4893-80d5-5ad4bc60ec9b",
+        "name": "ProductType",
+        "value": "TV"
+      },
+      {
+        "id": "7bf61a4e-c81d-4a40-a1bf-6488cd12eadb",
+        "name": "Company",
+        "value": "Sharp"
+      },
+      {
+        "id": "b4640055-c197-470c-b55a-137fbef737f5",
+        "name": "HomeDelivery",
+        "value": "Yes"
+      }
+    ],
+    "weight": "1999 g",
+    "size": "110x60x60 cm",
+    "model": "KajSharpTV000001",
+    "brand": "Sharp",
+    "manufacturer": "Sharp",
+    "techSpecs": "SMART HUB",
+    "shortDescription": "Televisions from Sharp",
+    "promoText": "Discounted price!!",
+    "ean": "ean10100000000000001",
+    "upc": "upc10100000000000001",
+    "isbn": "isn10100000000000001",
+    "mpn": "mpn10100000000000001",
+    "sku": "SKU1-TV000001",
+    "offers": [
+      {
+        "id": "989b7c02-8a2f-43e1-9e05-fd094b919552",
+        "offerId": "3d2a9e19-7d23-42ca-af66-91164f681f2a",
+        "sourceProductId": "First sourceProductId ByKIJmGVkC pglgRbbFxy",
+        "modifiedDate": "1677520388461",
+        "dateFormat": "epoch",
+        "feedId": 99999999,
+        "productUrl": "https://www.test.com?prod=1",
+        "programName": "Program302870",
+        "programLogo": "http://logo.gif",
+        "priceHistory": [
+          {
+            "id": "67d058d9-8fba-4b98-885c-556cf5bde270",
+            "currency": "SEK",
+            "date": 1677520388461,
+            "dateFormat": "epoch",
+            "value": 115.5
+          }
+        ],
+        "warranty": "10 years warranty",
+        "inStock": 371,
+        "availability": "In stock at supplier",
+        "deliveryTime": "7-20 days",
+        "condition": "Refurbished",
+        "shippingCost": "The shipping cost is 30."
+      }
+    ],
+    "owner": {
+      "id": "84f78d87-7335-47a7-883f-ce84caa79a3c",
+      "userId": "4d91539b-2329-400b-bad2-ca5165d8c884",
+      "filename": "2eea9b9f-6273-434d-83e3-05b20328910c.xml"
+    }
+  }
+]
